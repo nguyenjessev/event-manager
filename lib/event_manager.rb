@@ -13,16 +13,11 @@ def legislators_by_zipcode(zipcode)
   civic_info.key = 'AIzaSyA2gf1HONoNfuNKAU0917tx5EBRhN3ESQ8'
 
   begin
-    legislators = civic_info.representative_info_by_address(
+    civic_info.representative_info_by_address(
       address: zipcode,
       levels: 'country',
       roles: %w[legislatorUpperBody legislatorLowerBody]
-    )
-    legislators = legislators.officials
-
-    legislator_names = legislators.map(&:name)
-
-    legislator_names.join(', ')
+    ).officials
   rescue StandardError
     'You can find your representatives by visiting www.commoncause.org/take-action/find-elected-officials'
   end
@@ -31,7 +26,7 @@ end
 puts 'EventManager Initialized!'
 
 template_letter = File.read('form_letter.erb')
-erb_template = ERB.new template_letter
+erb_template = ERB.new(template_letter)
 
 contents = CSV.open('event_attendees.csv', headers: true, header_converters: :symbol)
 contents.each do |row|
