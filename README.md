@@ -5,7 +5,7 @@ This event manager takes a CSV file of users and outputs personalized HTML files
 Read from a file, parse the contents, use the data to fetch info from an API, then create customzied webpages (letters) for each user
 
 ## What I used
-Ruby libraries (CSV, Google Civic API, ERB), Ruby's File class, ERB templates
+Ruby libraries (CSV, Google Civic API, ERB, Date), Ruby's File class, ERB templates
 
 ## What I learned
 How to request information from an API, read file contents, and use ERB templates to dynamically generate files
